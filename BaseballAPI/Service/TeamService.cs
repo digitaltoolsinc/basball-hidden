@@ -1,4 +1,5 @@
 ﻿using BaseballAPI.Models;
+using BaseballAPI.Repository;
 
 namespace BaseballAPI.Service
 {
@@ -7,12 +8,14 @@ namespace BaseballAPI.Service
         private ILogger<TeamService> _logger;  
         private IConfiguration _configuration;
         private string _connectionString;
+        private IRepository _repository;
         
-        public TeamService(ILogger<TeamService> logger, IConfiguration configuration)
+        public TeamService(IRepository repostiory, ILogger<TeamService> logger, IConfiguration configuration)
         {
             _logger = logger;
             _configuration = configuration;
             _connectionString = _configuration.GetValue<string>("ConnectionString");
+            _repository = repostiory;
         }
 
         public IEnumerable<PlayerAPI> GetPlayers(string teamName)
@@ -23,11 +26,9 @@ namespace BaseballAPI.Service
                 int id = GetTeamID(teamName);
                 if (id > 0)
                 {
-                    List<Player> players = new List<Player>();
-                    using (var context = new BaseballContext(_connectionString))
-                    {
-                        players = context.Players.Where(i => i.TeamId == id).ToList();
-                    }
+                    List<Player> players = new List<Player>();                    
+                    players = _repository.GetPlayers().Where(i => i.TeamId == id).ToList();
+                    
                     foreach (var p in players)
                     {
                         PlayerAPI playerAPI = new PlayerAPI
@@ -55,11 +56,8 @@ namespace BaseballAPI.Service
         {
             try
             {
-                Team team = new Team();
-                using (var context = new BaseballContext(_connectionString))
-                {
-                    team = context.Teams.FirstOrDefault(i => i.TeamName == teamName);
-                }
+                Team team = new Team();               
+                team = _repository.GetTeams().FirstOrDefault(i => i.TeamName == teamName);                
                 if (team != null)
                     return team.TeamId;
                 return -1;

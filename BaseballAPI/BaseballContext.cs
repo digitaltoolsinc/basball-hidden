@@ -15,7 +15,7 @@ namespace BaseballAPI
         {
         }
 
-        public BaseballContext(string connectionString)
+        public BaseballContext(string connectionString, bool mock = true)
         {
             _connectionString = connectionString;
         }
