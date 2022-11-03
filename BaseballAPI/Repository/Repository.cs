@@ -1,4 +1,5 @@
-﻿using BaseballAPI.Service;
+﻿using BaseballAPI.Data;
+using BaseballAPI.Service;
 
 namespace BaseballAPI.Repository
 {
@@ -6,11 +7,11 @@ namespace BaseballAPI.Repository
     {
         //would not want to do this in real life because then you would be getting EVERYTHING from the database. you would need to change the linq queries
 
-        private ILogger<TeamService> _logger;
+        private ILogger<Repository> _logger;
         private IConfiguration _configuration;
         private string _connectionString;
 
-        public Repository(ILogger<TeamService> logger, IConfiguration configuration)
+        public Repository(ILogger<Repository> logger, IConfiguration configuration)
         {
             _logger = logger;
             _configuration = configuration;
@@ -26,6 +27,19 @@ namespace BaseballAPI.Repository
                 players = context.Players.ToList();
             }
             return players;
+        }
+
+
+
+        public Player GetPlayer(int playerId)
+        {
+            var player = new Player();
+
+            using (var context = new BaseballContext(_connectionString))
+            {
+                player = context.Players.FirstOrDefault(i => i.PlayerId == playerId);
+            }
+            return player;
         }
 
         public IEnumerable<Team> GetTeams()

@@ -5,20 +5,22 @@ using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace BaseballAPI
+namespace BaseballAPI.Data
 {
     public partial class BaseballContext : DbContext
     {
-        public string _connectionString;
+
+        private string _connectionString;
 
         public BaseballContext()
         {
         }
 
-        public BaseballContext(string connectionString, bool mock = true)
+        public BaseballContext(string connectionString)
         {
             _connectionString = connectionString;
         }
+
 
         public BaseballContext(DbContextOptions<BaseballContext> options)
             : base(options)
@@ -28,13 +30,7 @@ namespace BaseballAPI
         public virtual DbSet<Player> Players { get; set; }
         public virtual DbSet<Team> Teams { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-                optionsBuilder.UseSqlServer(_connectionString);
-            }
-        }
+  
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

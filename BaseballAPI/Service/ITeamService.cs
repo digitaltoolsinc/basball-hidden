@@ -8,5 +8,7 @@ namespace BaseballAPI.Service
         IEnumerable<PlayerAPI> GetPlayers(string teamName);
 
         int GetTeamID(string teamName);
+
+        int GetPlayer(int playerId);
     }
 }

@@ -3,7 +3,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace BaseballAPI
+namespace BaseballAPI.Data
 {
     public partial class Player
     {

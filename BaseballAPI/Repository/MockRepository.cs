@@ -1,4 +1,6 @@
-﻿namespace BaseballAPI.Repository
+﻿using BaseballAPI.Data;
+
+namespace BaseballAPI.Repository
 {
     public class MockRepository : IRepository
     {
