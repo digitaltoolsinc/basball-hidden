@@ -9,6 +9,5 @@ namespace BaseballAPI.Service
 
         int GetTeamID(string teamName);
 
-        int GetPlayer(int playerId);
     }
 }

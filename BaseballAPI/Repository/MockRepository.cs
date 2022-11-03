@@ -4,6 +4,21 @@ namespace BaseballAPI.Repository
 {
     public class MockRepository : IRepository
     {
+        public Player GetPlayer(int playerId)
+        {
+            return new Player
+            {
+                FirstName = "Aaron",
+                LastName = "Judge",
+                BattingAverage = 0.311,
+                HomeRuns = 62,
+                Rbis = 131,
+                Position = "CF",
+                TeamId = 2,
+                PlayerId = 3
+            };
+        }
+
         public IEnumerable<Player> GetPlayers()
         {
             var players = new List<Player>();

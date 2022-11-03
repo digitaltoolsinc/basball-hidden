@@ -27,10 +27,18 @@ namespace BaseballAPI.Data
         {
         }
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlServer(_connectionString);
+            }
+        }
+
         public virtual DbSet<Player> Players { get; set; }
         public virtual DbSet<Team> Teams { get; set; }
 
-  
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

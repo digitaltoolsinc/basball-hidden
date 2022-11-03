@@ -1,4 +1,5 @@
-﻿using BaseballAPI.Models;
+﻿using BaseballAPI.Data;
+using BaseballAPI.Models;
 using BaseballAPI.Repository;
 
 namespace BaseballAPI.Service
