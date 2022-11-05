@@ -50,7 +50,7 @@ Small methods are also much easier to unit test.
 See the SOLID principles - https://en.wikipedia.org/wiki/SOLID
 
 ### Unit Tests
-Unit tests may seem like a lot of pointless work at first. But they can save you a lot of pain and frustration. Good engineers find ways to automate repititive and mudane tasks. If you can automate some of the basic tests of your code, you will be able to find bugs that you didn't even realize.
+Unit tests may seem like a lot of pointless work at first. But they can save you a lot of pain and frustration. Good engineers find ways to automate repetitive and mudane tasks. If you can automate some of the basic tests of your code, you will be able to find bugs that you didn't even realize.
 
 Also, if you change your code and your tests start to fail, it may be that you just need to update the tests, or it may be that something is wrong and you introduced a bug that you need to fix. Unit tests allow you to do this in a development enviornment, before QA or Prod Support or the business have to ask you why your code failed.
 
