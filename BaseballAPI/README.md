@@ -35,6 +35,8 @@ Views, store procedures, tables, and other database objects should never be part
 
 UI projects should not be in the solution. Use Swagger or Postman to test. An API or microservice is a separate deployable unit than the UI, or whatever else may call this API. You may have hundreds of microservices. They should all be independently deployable and testable.
 
+## General Concepts
+
 ### Coding standards guideline
 This is a guideline not a hard and fast rule. But if you start to have more than 500 lines of code in a single class, it may be time to reevaluate and rethink how you are organizing your class structure. Keep a single class per file. Resist putting multiple classes into a single file.
 
