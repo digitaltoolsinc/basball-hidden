@@ -44,6 +44,7 @@ Don't use fancy new patterns or syntax simply because they are neat or fun or yo
 Classes and methods should be small and easy to read. If a method/function has a lot of code,  or if you find yourself repeating the same code over and over again, consider creating a single method for the code you are repeating. Only repeat code in multipe places if you are doing so for an express purpose. 
 
 Small methods are much easier to unit test. 
+
 See the SOLID principles - https://en.wikipedia.org/wiki/SOLID
 
 ### Unit Tests
