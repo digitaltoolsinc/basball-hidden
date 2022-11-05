@@ -15,8 +15,8 @@ There is no unit tests project yet but there should be one soon written with NUn
 ### Controller
 Controllers contain our endpoints. UIs and other APIS access our endpoints. Our controllers should be kept small. There should be minimal buisness logic in our controllers. We should simply accept HTTP Requests and return them with an appropriate HTTP Status Code.
 
-> HTTP Status Codes - https://en.wikipedia.org/wiki/List_of_HTTP_status_codes
-> HTTP and REST APIs - See https://restfulapi.net/ and https://aws.amazon.com/what-is/restful-api/
+- HTTP Status Codes - https://en.wikipedia.org/wiki/List_of_HTTP_status_codes
+- HTTP and REST APIs - See https://restfulapi.net/ and https://aws.amazon.com/what-is/restful-api/
 
 ### Services
 Our service classes contain most of the business logic such as validation or any thing special that might come up.
