@@ -15,8 +15,8 @@ There is no unit tests project yet but there should be one soon written with NUn
 ### Controller
 Controllers contain our endpoints. UIs and other APIS access our endpoints. Our controllers should be kept small. There should be minimal buisness logic in our controllers. We should simply accept HTTP Requests and return them with an appropriate HTTP Status Code.
 
-HTTP Status Codes - https://en.wikipedia.org/wiki/List_of_HTTP_status_codes
-HTTP and REST APIs - See https://restfulapi.net/ and https://aws.amazon.com/what-is/restful-api/
+> HTTP Status Codes - https://en.wikipedia.org/wiki/List_of_HTTP_status_codes
+> HTTP and REST APIs - See https://restfulapi.net/ and https://aws.amazon.com/what-is/restful-api/
 
 ### Services
 Our service classes contain most of the business logic such as validation or any thing special that might come up.
@@ -40,7 +40,7 @@ Don't use fancy new patterns or syntax simply because they are neat or fun or yo
 Classes and methods should be small and easy to read. If a method/function has a lot of code,  or if you find yourself repeating the same code over and over again, consider creating a single method for the code you are repeating. Only repeat code in multipe places if you are doing so for an express purpose. 
 
 Small methods are much easier to unit test. 
-See SOLID - https://en.wikipedia.org/wiki/SOLID
+See the SOLID principles - https://en.wikipedia.org/wiki/SOLID
 
 ### Unit Tests
 Unit tests may seem like a lot of pointless work at first. But they can save you a lot of pain and frustration. Good engineers find ways to automate repititive and mudane tasks. If you can automate some of the basic tests of your code, you will be able to find bugs that you didn't even realize.
