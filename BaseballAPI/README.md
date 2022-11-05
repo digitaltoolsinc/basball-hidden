@@ -22,7 +22,10 @@ Controllers contain our endpoints. UIs and other APIS access our endpoints. Our 
 Our service classes contain most of the business logic such as validation or any thing special that might come up.
 
 ### Repository
-We use a repository interface to 1. mock data for future unit testing and 2. to be able to create new repostories for different data store. This way we can both test without being connected to a live database. Also if the data store changes (say from MS SQL to Oracle or even to a NoSQL database like MongoDB, we can just create a new repo implementing the interface. Our controllers and service classes will not need to change.
+We use a repository interface to 
+  - mock data for future unit testing 
+  - to be able to create new repostories for different data store.
+This way we can both test without being connected to a live database. Also if the data store changes (say from MS SQL to Oracle or even to a NoSQL database like MongoDB, we can just create a new repo implementing the interface. Our controllers and service classes will not need to change.
 
 We are currently using EF Core to connect to the database.
 
