@@ -5,11 +5,12 @@ using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace BaseballAPI
+namespace BaseballAPI.Data
 {
     public partial class BaseballContext : DbContext
     {
-        public string _connectionString;
+
+        private string _connectionString;
 
         public BaseballContext()
         {
@@ -20,13 +21,11 @@ namespace BaseballAPI
             _connectionString = connectionString;
         }
 
+
         public BaseballContext(DbContextOptions<BaseballContext> options)
             : base(options)
         {
         }
-
-        public virtual DbSet<Player> Players { get; set; }
-        public virtual DbSet<Team> Teams { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -35,6 +34,11 @@ namespace BaseballAPI
                 optionsBuilder.UseSqlServer(_connectionString);
             }
         }
+
+        public virtual DbSet<Player> Players { get; set; }
+        public virtual DbSet<Team> Teams { get; set; }
+
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
