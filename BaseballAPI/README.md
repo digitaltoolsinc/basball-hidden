@@ -1,3 +1,5 @@
+--apologies if this seems like a lecture. I'm suffering from insomnia. Cut me some slack.
+
 # The What
 
 This is a C# Microservice written in .NET 6. It uses the Web API template. It currently connects to a SQL table, but uses the repository pattern and thus the code can be updated to accomodate other data stores such as Oracle or MongoDB.
