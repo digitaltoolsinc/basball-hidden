@@ -19,7 +19,7 @@ namespace BaseballAPI.Service
             _repository = repostiory;
         }
 
-        public IEnumerable<PlayerAPI> GetPlayers(string teamName)
+        public IEnumerable<PlayerAPI> GetPlayersOnTeam(string teamName)
         {
             List<PlayerAPI> playersAPI = new List<PlayerAPI>();
             try
@@ -28,7 +28,7 @@ namespace BaseballAPI.Service
                 if (id > 0)
                 {
                     List<Player> players = new List<Player>();                    
-                    players = _repository.GetPlayers().Where(i => i.TeamId == id).ToList();
+                    players = _repository.GetPlayersOnTeam().Where(i => i.TeamId == id).ToList();
                     
                     foreach (var p in players)
                     {
