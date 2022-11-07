@@ -9,12 +9,14 @@ namespace BaseballAPI.Service
 
         private ILogger<PlayerService> _logger;
         private IConfiguration _configuration;
+        private string _connectionString;
         private IRepository _repository;
 
         public PlayerService(IRepository repostiory, ILogger<PlayerService> logger, IConfiguration configuration)
         {
             _logger = logger;
-            _configuration = configuration;         
+            _configuration = configuration;
+            _connectionString = _configuration.GetValue<string>("ConnectionString");
             _repository = repostiory;
         }       
 

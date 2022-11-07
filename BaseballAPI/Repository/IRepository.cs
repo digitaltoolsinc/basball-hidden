@@ -4,7 +4,7 @@ namespace BaseballAPI.Repository
 {
     public interface IRepository
     {
-        IEnumerable<Player> GetPlayersOnTeam();
+        IEnumerable<Player> GetPlayers();
 
         IEnumerable<Team> GetTeams();
 

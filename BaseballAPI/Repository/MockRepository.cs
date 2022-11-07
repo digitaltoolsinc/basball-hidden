@@ -2,7 +2,7 @@
 
 namespace BaseballAPI.Repository
 {
-    public class testRepository : IRepository
+    public class MockRepository : IRepository
     {
         public Player GetPlayer(int playerId)
         {
@@ -19,7 +19,7 @@ namespace BaseballAPI.Repository
             };
         }
 
-        public IEnumerable<Player> GetPlayersOnTeam()
+        public IEnumerable<Player> GetPlayers()
         {
             var players = new List<Player>();
             var player1 = new Player

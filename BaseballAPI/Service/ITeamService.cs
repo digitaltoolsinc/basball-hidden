@@ -5,7 +5,7 @@ namespace BaseballAPI.Service
 {
     public interface ITeamService
     {
-        IEnumerable<PlayerAPI> GetPlayersOnTeam(string teamName);
+        IEnumerable<PlayerAPI> GetPlayers(string teamName);
 
         int GetTeamID(string teamName);
 

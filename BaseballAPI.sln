@@ -3,9 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32922.545
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BaseballAPI", "BaseballAPI\BaseballAPI.csproj", "{3F7D5FC6-1DC7-420D-B91C-D22FEE4007E1}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaseballAPI.Tests", "BaseballAPI.Tests\BaseballAPI.Tests.csproj", "{4ED506EA-A5D6-431B-B6A4-92EB5DC76D61}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaseballAPI", "BaseballAPI\BaseballAPI.csproj", "{3F7D5FC6-1DC7-420D-B91C-D22FEE4007E1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +15,6 @@ Global
 		{3F7D5FC6-1DC7-420D-B91C-D22FEE4007E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F7D5FC6-1DC7-420D-B91C-D22FEE4007E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F7D5FC6-1DC7-420D-B91C-D22FEE4007E1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4ED506EA-A5D6-431B-B6A4-92EB5DC76D61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4ED506EA-A5D6-431B-B6A4-92EB5DC76D61}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4ED506EA-A5D6-431B-B6A4-92EB5DC76D61}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4ED506EA-A5D6-431B-B6A4-92EB5DC76D61}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

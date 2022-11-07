@@ -21,7 +21,7 @@ namespace BaseballAPI.Controllers
         [HttpGet]
         public IEnumerable<PlayerAPI> GetPlayers(string teamName)
         {
-           var players = _teamService.GetPlayersOnTeam(teamName);
+           var players = _teamService.GetPlayers(teamName);
            return players;          
 
         }
@@ -35,7 +35,7 @@ namespace BaseballAPI.Controllers
         {
             try
             {
-                var players = _teamService.GetPlayersOnTeam(teamName);
+                var players = _teamService.GetPlayers(teamName);
                 if (players.Count() > 0)
                     return Ok(players);
                 else
