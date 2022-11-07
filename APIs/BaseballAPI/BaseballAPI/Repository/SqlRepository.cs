@@ -3,22 +3,22 @@ using BaseballAPI.Service;
 
 namespace BaseballAPI.Repository
 {
-    public class Repository : IRepository
+    public class SqlRepository : IRepository
     {
         //would not want to do this in real life because then you would be getting EVERYTHING from the database. you would need to change the linq queries
 
-        private ILogger<Repository> _logger;
+        private ILogger<SqlRepository> _logger;
         private IConfiguration _configuration;
         private string _connectionString;
 
-        public Repository(ILogger<Repository> logger, IConfiguration configuration)
+        public SqlRepository(ILogger<SqlRepository> logger, IConfiguration configuration)
         {
             _logger = logger;
             _configuration = configuration;
             _connectionString = _configuration.GetValue<string>("ConnectionString");
         }
 
-        public IEnumerable<Player> GetPlayers()
+        public IEnumerable<Player> GetPlayersOnTeam()
         {
             var players = new List<Player>();
             
