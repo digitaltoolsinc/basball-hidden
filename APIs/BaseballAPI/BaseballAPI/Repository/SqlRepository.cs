@@ -1,5 +1,8 @@
 ﻿using BaseballAPI.Data;
+using BaseballAPI.Models;
 using BaseballAPI.Service;
+using Microsoft.EntityFrameworkCore;
+using Player = BaseballAPI.Data.Player;
 
 namespace BaseballAPI.Repository
 {
@@ -40,6 +43,22 @@ namespace BaseballAPI.Repository
                 player = context.Players.FirstOrDefault(i => i.PlayerId == playerId);
             }
             return player;
+        }
+
+        public int AddPlayer(Player player)
+        {
+            try
+            {
+                using (var context = new BaseballContext(_connectionString))
+                {
+                    return context.Database.ExecuteSqlInterpolated($"dbo.InsertPlayer {player.FirstName}, {player.LastName}, {player.TeamId}, {player.BattingAverage}, {player.HomeRuns}, {player.Rbis}, {player.Position}");
+                }
+            }
+            catch(Exception e)
+            {
+                _logger.LogError(e.Message);
+                return 0;
+            }
         }
 
         public IEnumerable<Team> GetTeams()

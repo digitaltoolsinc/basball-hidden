@@ -2,6 +2,7 @@
 using BaseballAPI.Models;
 using BaseballAPI.Service;
 using Microsoft.AspNetCore.Mvc;
+using Player = BaseballAPI.Models.Player;
 
 namespace BaseballAPI.Controllers
 {
@@ -23,7 +24,6 @@ namespace BaseballAPI.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [Produces("application/json")]
-        [Route("different/route")]
         public IActionResult GetPlayer(int playerId)
         {
             try
@@ -40,7 +40,35 @@ namespace BaseballAPI.Controllers
                 return BadRequest("Oops! An error happened!");
             }
 
-            return BadRequest("Oops! An error happened!");
+        }
+
+        [HttpPost]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [Produces("application/json")]
+        public IActionResult AddPlayer(Player player)
+        {
+            try
+            {
+                //need some validations somwhere
+                if (_playerService.AddPlayer(player) == 1)
+                {
+                    _logger.LogInformation("player added");
+                    return Ok("player Added!");
+                }
+                else
+                {
+                    _logger.LogInformation("error!.");
+                    return BadRequest("error!");
+                }
+            
+
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e.Message);
+                return BadRequest("Oops! An error happened!");
+            }
         }
     }
 }

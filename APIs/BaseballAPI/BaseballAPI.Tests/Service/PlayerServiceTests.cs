@@ -51,6 +51,7 @@ namespace BaseballAPI.Tests.Service
 
             //Act
             var result = _playerService.GetPlayer(3);
+            
 
             //Assert
             Assert.IsTrue(result.PlayerId == _player.PlayerId);

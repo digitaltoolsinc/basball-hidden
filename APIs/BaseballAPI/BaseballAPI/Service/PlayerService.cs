@@ -1,6 +1,8 @@
 ﻿using BaseballAPI.Data;
+using BaseballAPI.Mappers;
 using BaseballAPI.Models;
 using BaseballAPI.Repository;
+
 
 namespace BaseballAPI.Service
 {
@@ -18,18 +20,33 @@ namespace BaseballAPI.Service
             _repository = repostiory;
         }       
 
-        public Player GetPlayer(int playerId)
+        public Models.Player GetPlayer(int playerId)
         {
-            Player player = new Player();
+            Models.Player player = new Models.Player();
             try
             {           
-                player = _repository.GetPlayer(playerId);                                   
+                var playerFromDb = _repository.GetPlayer(playerId);
+                player = PlayerMapper.MapDataObjectToAPIObject(playerFromDb);
             }
             catch (Exception e)
             {
                 _logger.LogError(e.Message);
             }
             return player;
+        }
+
+        public int AddPlayer(Models.Player player)
+        {   
+            try
+            {
+                var playerToSaveToDb = PlayerMapper.MapAPIObjectToDataObject(player);
+                return _repository.AddPlayer(playerToSaveToDb);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e.Message);
+            }
+            return 0;
         }
     }
 }

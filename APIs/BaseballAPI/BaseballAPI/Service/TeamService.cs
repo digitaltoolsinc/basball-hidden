@@ -19,20 +19,20 @@ namespace BaseballAPI.Service
             _repository = repostiory;
         }
 
-        public IEnumerable<PlayerAPI> GetPlayersOnTeam(string teamName)
+        public IEnumerable<Models.Player> GetPlayersOnTeam(string teamName)
         {
-            List<PlayerAPI> playersAPI = new List<PlayerAPI>();
+            List<Models.Player> playersAPI = new List<Models.Player>();
             try
             {
                 int id = GetTeamID(teamName);
                 if (id > 0)
                 {
-                    List<Player> players = new List<Player>();                    
+                    List<Data.Player> players = new List<Data.Player>();                    
                     players = _repository.GetPlayersOnTeam().Where(i => i.TeamId == id).ToList();
                     
                     foreach (var p in players)
                     {
-                        PlayerAPI playerAPI = new PlayerAPI
+                        Models.Player playerAPI = new Models.Player
                         {
                             BattingAverage = p.BattingAverage,
                             FirstName = p.FirstName,

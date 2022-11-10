@@ -1,4 +1,5 @@
-﻿using BaseballAPI.Data;
+﻿
+using BaseballAPI.Models;
 
 namespace BaseballAPI.Service
 {
@@ -6,6 +7,8 @@ namespace BaseballAPI.Service
     {
 
         Player GetPlayer(int playerId);
+
+        int AddPlayer(Player player);
 
     }
 }

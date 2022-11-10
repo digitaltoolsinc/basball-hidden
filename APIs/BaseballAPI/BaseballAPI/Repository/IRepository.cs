@@ -9,5 +9,7 @@ namespace BaseballAPI.Repository
         IEnumerable<Team> GetTeams();
 
         Player GetPlayer(int playerId);
+
+        int AddPlayer(Player player);
     }
 }

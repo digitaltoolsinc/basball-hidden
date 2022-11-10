@@ -19,7 +19,7 @@ namespace BaseballAPI.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<PlayerAPI> GetPlayers(string teamName)
+        public IEnumerable<Player> GetPlayers(string teamName)
         {
            var players = _teamService.GetPlayersOnTeam(teamName);
            return players;          
