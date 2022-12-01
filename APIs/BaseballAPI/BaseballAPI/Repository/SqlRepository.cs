@@ -13,46 +13,31 @@ namespace BaseballAPI.Repository
         private ILogger<SqlRepository> _logger;
         private IConfiguration _configuration;
         private string _connectionString;
+        private BaseballContext _context;
 
-        public SqlRepository(ILogger<SqlRepository> logger, IConfiguration configuration)
+        public SqlRepository(ILogger<SqlRepository> logger, IConfiguration configuration, BaseballContext context)
         {
             _logger = logger;
             _configuration = configuration;
             _connectionString = _configuration.GetValue<string>("ConnectionString");
+            _context = context;
         }
 
         public IEnumerable<Player> GetPlayersOnTeam()
-        {
-            var players = new List<Player>();
-            
-            using (var context = new BaseballContext(_connectionString))
-            {
-                players = context.Players.ToList();
-            }
-            return players;
+        {           
+            return _context.Players.ToList();           
         }
 
-
-
         public Player GetPlayer(int playerId)
-        {
-            var player = new Player();
-
-            using (var context = new BaseballContext(_connectionString))
-            {
-                player = context.Players.FirstOrDefault(i => i.PlayerId == playerId);
-            }
-            return player;
+        {           
+            return _context.Players.FirstOrDefault(i => i.PlayerId == playerId);          
         }
 
         public int AddPlayer(Player player)
         {
             try
-            {
-                using (var context = new BaseballContext(_connectionString))
-                {
-                    return context.Database.ExecuteSqlInterpolated($"dbo.InsertPlayer {player.FirstName}, {player.LastName}, {player.TeamId}, {player.BattingAverage}, {player.HomeRuns}, {player.Rbis}, {player.Position}");
-                }
+            {            
+               return _context.Database.ExecuteSqlInterpolated($"dbo.InsertPlayer {player.FirstName}, {player.LastName}, {player.TeamId}, {player.BattingAverage}, {player.HomeRuns}, {player.Rbis}, {player.Position}");              
             }
             catch(Exception e)
             {
@@ -63,13 +48,7 @@ namespace BaseballAPI.Repository
 
         public IEnumerable<Team> GetTeams()
         {
-            var teams = new List<Team>();
-
-            using (var context = new BaseballContext(_connectionString))
-            {
-                teams = context.Teams.ToList();
-            }
-            return teams;
+            return _context.Teams.ToList();
         }
 
     }

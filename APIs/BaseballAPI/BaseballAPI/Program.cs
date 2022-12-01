@@ -1,4 +1,5 @@
 using BaseballAPI;
+using BaseballAPI.Data;
 using BaseballAPI.Repository;
 using BaseballAPI.Service;
 using FluentAssertions.Common;
@@ -16,6 +17,11 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddDbContext<BaseballContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("ConnectionString"));
+
+});
 builder.Services.AddScoped<IRepository, SqlRepository>();
 builder.Services.AddScoped<ITeamService, TeamService>();
 builder.Services.AddScoped<IPlayerService, PlayerService>();

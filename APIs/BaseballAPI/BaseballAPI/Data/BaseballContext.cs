@@ -2,6 +2,7 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
@@ -10,29 +11,17 @@ namespace BaseballAPI.Data
     public partial class BaseballContext : DbContext
     {
 
-        private string _connectionString;
+        protected readonly IConfiguration Configuration;
 
-        public BaseballContext()
+        public BaseballContext(IConfiguration configuration)
         {
+            Configuration = configuration;
         }
 
-        public BaseballContext(string connectionString)
+        protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
-            _connectionString = connectionString;
-        }
-
-
-        public BaseballContext(DbContextOptions<BaseballContext> options)
-            : base(options)
-        {
-        }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-                optionsBuilder.UseSqlServer(_connectionString);
-            }
+            // connect to sql server with connection string from app settings
+            options.UseSqlServer(Configuration.GetConnectionString("BaseballDatabase"));
         }
 
         public virtual DbSet<Player> Players { get; set; }
